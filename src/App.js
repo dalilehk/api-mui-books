@@ -58,11 +58,19 @@ function App() {
   }
 
   if (error) {
-    content = <p>{error}</p>;
+    content = (
+      <Typography variant="h3" textAlign="center" color="secondary">
+        {error}
+      </Typography>
+    );
   }
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = (
+      <Typography variant="h3" textAlign="center">
+        Loading...
+      </Typography>
+    );
   }
 
   return (
@@ -82,7 +90,7 @@ function App() {
             `The book series contains ${count} volumes.`
           )}
         </Typography>
-        <section> {content} </section>
+        <div>{content}</div>
       </main>
     </Container>
   );
