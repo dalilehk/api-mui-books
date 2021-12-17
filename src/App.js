@@ -1,4 +1,10 @@
-import { Container, Typography, Skeleton } from '@mui/material';
+import {
+  Box,
+  Container,
+  Typography,
+  Skeleton,
+  CircularProgress,
+} from '@mui/material';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { useState, useEffect } from 'react';
 import BooksOverview from './components/BooksOverview';
@@ -30,7 +36,6 @@ function App() {
             country: book.country,
             mediaType: book.mediaType,
             publisher: book.publisher,
-            released: book.released,
             released: book.released.substr(0, 4),
             title: book.name,
             url: book.url,
@@ -54,7 +59,18 @@ function App() {
   let content = <p>Found no books.</p>;
 
   if (count > 0) {
-    content = <BooksOverview books={books} />;
+    content = (
+      <>
+        <Typography>
+          {count === undefined ? (
+            <Skeleton variant="text" />
+          ) : (
+            `The book series contains ${count} volumes.`
+          )}
+        </Typography>
+        <BooksOverview books={books} />
+      </>
+    );
   }
 
   if (error) {
@@ -67,9 +83,9 @@ function App() {
 
   if (isLoading) {
     content = (
-      <Typography variant="h3" textAlign="center">
-        Loading...
-      </Typography>
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
     );
   }
 
@@ -82,14 +98,6 @@ function App() {
       </header>
       <main>
         <Typography variant="h2">Game of Thrones</Typography>
-
-        <Typography>
-          {count === undefined ? (
-            <Skeleton variant="text" />
-          ) : (
-            `The book series contains ${count} volumes.`
-          )}
-        </Typography>
         <div>{content}</div>
       </main>
     </Container>
