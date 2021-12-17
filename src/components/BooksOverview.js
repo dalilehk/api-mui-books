@@ -7,7 +7,7 @@ const BookOverview = (props) => {
   const bookOverview = books.map((book) => {
     return <Book book={book} />;
   });
-  return <Box sx={{ maxWidth: 600 }}>{bookOverview}</Box>;
+  return <Box sx={{ maxWidth: 500, minWidth: 400 }}>{bookOverview}</Box>;
 };
 
 export default BookOverview;

@@ -1,10 +1,4 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Skeleton,
-  CircularProgress,
-} from '@mui/material';
+import { Box, Container, Typography, CircularProgress } from '@mui/material';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { useState, useEffect } from 'react';
 import BooksOverview from './components/BooksOverview';
@@ -56,18 +50,12 @@ function App() {
   }, []);
 
   // Handling messages
-  let content = <Typography>No book found</Typography>;
+  let content = <Typography>No books found</Typography>;
 
   if (count > 0) {
     content = (
       <>
-        <Typography>
-          {count === undefined ? (
-            <Skeleton variant="text" />
-          ) : (
-            `The book series contains ${count} volumes.`
-          )}
-        </Typography>
+        <Typography>The book series contains {count} volumes.</Typography>
         <BooksOverview books={books} />
       </>
     );
@@ -98,7 +86,7 @@ function App() {
       </header>
       <main>
         <Typography variant="h2">Game of Thrones</Typography>
-        <div>{content}</div>
+        <div className="content">{content}</div>
       </main>
     </Container>
   );
