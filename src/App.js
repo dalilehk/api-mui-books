@@ -56,7 +56,7 @@ function App() {
   }, []);
 
   // Handling messages
-  let content = <p>Found no books.</p>;
+  let content = <Typography>No book found</Typography>;
 
   if (count > 0) {
     content = (
