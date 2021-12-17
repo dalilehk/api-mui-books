@@ -21,7 +21,7 @@ const Book = (props) => {
 
   return (
     <>
-      <Card variant="outlined">
+      <Card variant="outlined" sx={{ bgcolor: '#DCDCDC', mt: 2 }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>
             {book.title}

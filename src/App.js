@@ -78,14 +78,16 @@ function App() {
   }
 
   return (
-    <Container>
+    <Container maxWidth="sm">
       <header>
         <Typography variant="h1" textAlign="center">
           <LibraryBooksIcon /> Rest API + MaterialUI React Challenge
         </Typography>
       </header>
       <main>
-        <Typography variant="h2">Game of Thrones</Typography>
+        <Typography variant="h2" sx={{ pt: 6 }}>
+          Game of Thrones
+        </Typography>
         <div className="content">{content}</div>
       </main>
     </Container>
