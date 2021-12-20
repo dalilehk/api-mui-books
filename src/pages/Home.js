@@ -7,7 +7,19 @@ const Home = (props) => {
   const { books, count, error, isLoading } = props;
 
   // Handling messages
-  let content = <Typography>No books found</Typography>;
+  let content = <NotFound />;
+
+  if (isLoading) {
+    content = (
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    content = <NotFound />;
+  }
 
   if (count > 0) {
     content = (
@@ -18,23 +30,6 @@ const Home = (props) => {
         </Typography>
         <BooksOverview books={books} />
       </>
-    );
-  }
-
-  if (error) {
-    content = (
-      <NotFound />
-      // <Typography variant="h3" textAlign="center" color="secondary">
-      //   {error}
-      // </Typography>
-    );
-  }
-
-  if (isLoading) {
-    content = (
-      <Box sx={{ display: 'flex' }}>
-        <CircularProgress />
-      </Box>
     );
   }
 

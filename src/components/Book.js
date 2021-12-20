@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Card,
@@ -23,7 +23,7 @@ import BookDetails from './BookDetails';
 
 const Book = (props) => {
   // const classes = useStyles();
-
+  const navigate = useNavigate();
   const { book } = props;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,6 +32,7 @@ const Book = (props) => {
   };
   const handleClose = () => {
     setIsOpen(false);
+    navigate('/books');
   };
 
   return (
