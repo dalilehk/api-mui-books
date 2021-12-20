@@ -79,7 +79,6 @@ function App() {
             />
           }
         />
-
         <Route exact path="*" element={<NotFound />} />
       </Routes>
     </Container>
@@ -87,3 +86,5 @@ function App() {
 }
 
 export default App;
+
+// TODO: Create ContextAPI instead of drilling the props through components?

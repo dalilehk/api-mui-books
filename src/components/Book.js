@@ -72,6 +72,7 @@ const Book = (props) => {
         </CardActions>
       </Card>
 
+      {/* to reload only on open, not all in advance */}
       {isOpen && (
         <BookDetails open={isOpen} handleClose={handleClose} book={book} />
       )}
