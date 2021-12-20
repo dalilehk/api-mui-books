@@ -2,6 +2,8 @@ import { Box } from '@mui/material';
 import Book from './Book';
 import FilterPublicationDate from './FilterPublicationDate';
 
+// TODO: how to filter, when array with years is not empty?
+
 const BookOverview = (props) => {
   const { books } = props;
 

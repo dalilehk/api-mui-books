@@ -8,11 +8,10 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function FilterPublicationDate(props) {
   const { books } = props;
-  // Filter unique values from an array of publication Date
   const publicationDates = books.map((book) => book.publicationDate);
   let uniquePublicationDates = [...new Set(publicationDates)];
 
-  // TODO: filtrowanie ksiażek po wybranym roku...
+  // TODO: How pass an array with selected years to filter all books? (to the Booksoverview component?)
 
   return (
     <Autocomplete
@@ -21,6 +20,9 @@ export default function FilterPublicationDate(props) {
       options={uniquePublicationDates}
       disableCloseOnSelect
       getOptionLabel={(book) => book}
+      onChange={(event, newValue) => {
+        console.log(newValue);
+      }}
       renderOption={(props, book, { selected }) => (
         <li {...props}>
           <Checkbox

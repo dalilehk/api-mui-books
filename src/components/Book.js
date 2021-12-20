@@ -72,7 +72,9 @@ const Book = (props) => {
         </CardActions>
       </Card>
 
-      <BookDetails open={isOpen} handleClose={handleClose} book={book} />
+      {isOpen && (
+        <BookDetails open={isOpen} handleClose={handleClose} book={book} />
+      )}
     </>
   );
 };
