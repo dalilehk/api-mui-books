@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Card,
@@ -7,33 +9,69 @@ import {
   Button,
 } from '@mui/material';
 import BookDetails from './BookDetails';
+// TODO: makeStyles doesn't work! neither from '@mui/material/styles' or '@mui/material/styles'
+// import { makeStyles } from '@mui/material/styles';
+
+// const useStyles = makeStyles({
+//   card: {
+//     backgroundColor: 'violet',
+//     '&:hover': {
+//       backgroundColor: 'yellow',
+//     },
+//   },
+// });
 
 const Book = (props) => {
+  // const classes = useStyles();
+
   const { book } = props;
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setIsOpen(true);
   };
   const handleClose = () => {
-    setOpen(false);
+    setIsOpen(false);
   };
 
   return (
     <>
-      <Card variant="outlined" sx={{ bgcolor: '#DCDCDC', mt: 2 }}>
+      <Card
+        variant="outlined"
+        sx={{
+          mt: 2,
+          backgroundColor: '#f5f5f5',
+          '&:hover': {
+            backgroundColor: '#ede7f6',
+          },
+        }}
+      >
         <CardContent>
-          <Typography variant="h5" gutterBottom>
-            {book.title}
+          <Typography variant="h2">{book.title}</Typography>
+          <Typography variant="subtitle1" color="#666">
+            {book.authors}
+          </Typography>
+          <Typography variant="subtitle1" color="#666" gutterBottom>
+            {book.publicationDate}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" onClick={handleClickOpen}>
-            See more details
-          </Button>
+        <CardActions sx={{ pl: 2, mb: 1 }}>
+          {/* Link to dynamic path */}
+          <Link to={`/books/${book.id}`} style={{ textDecoration: 'none' }}>
+            <Button
+              size="small"
+              onClick={handleClickOpen}
+              variant="contained"
+              color="secondary"
+              align="center"
+            >
+              See more details
+            </Button>
+          </Link>
         </CardActions>
       </Card>
-      <BookDetails open={open} handleClose={handleClose} book={book} />
+
+      <BookDetails open={isOpen} handleClose={handleClose} book={book} />
     </>
   );
 };
